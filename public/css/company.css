@@ -1,3 +1,9 @@
+main{
+  display: inline-block;
+  background-color: antiquewhite;
+  width: 98vw;
+}
+
 div.employee.card {
   border: 1px solid #000;
 }
@@ -6,4 +12,13 @@ div.employee.card {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, 350px);
+}
+
+#dialog{
+  display: block;
+  position: absolute;
+  top: 35vh;
+  left: 35vw;
+  z-index: auto;
+  margin-top: 0px;
 }
