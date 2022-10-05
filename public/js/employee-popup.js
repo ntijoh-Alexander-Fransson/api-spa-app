@@ -1,8 +1,15 @@
 const popupTemplate = document.createElement("template");
 popupTemplate.innerHTML = `
+    <style>
+      dialog{
+        display: flex;
+        justify-content: end;
+      }
+    </style>
     <dialog open="true">
-        <button>close</button>
-        <p>hjelp</p>
+        <button>X</button>
+        <section>
+        </section>
     </dialog>
 `;
 
@@ -24,7 +31,9 @@ class EmployeePopup extends HTMLElement {
     const response = await fetch(`/api/employees/${this.employeeId}`);
     const json = await response.json();
 
-    this.shadowRoot.querySelector("p").textContent = JSON.stringify(json);
+    const fields = Object.values(json);
+    this.shadowRoot.querySelector('section').appendChild(new PopupForm({fields}));
+    
   };
 
   close = () => {

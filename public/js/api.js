@@ -8,6 +8,7 @@ async function index() {
   json.forEach((employee) => {
     employeeSection.appendChild(new EmployeeCard(employee));
   });
+
 }
 
 async function add() {
