@@ -1,9 +1,9 @@
 const popupFormLables = [
-    'img ',
-    'name ',
-    'email ',
-    'phone ',
-    'department '
+    'img',
+    'name',
+    'email',
+    'phone',
+    'department_id'
 ]
 
 const popupFormTemplate = document.createElement('template');
@@ -64,9 +64,11 @@ class PopupForm extends HTMLElement {
             requestBody[element.name] = element.value;
         });
 
+        console.log(requestBody);
+
         const response = await fetch('/api/employees/'+this.fields[0],{
             method: "PATCH",
-            body: requestBody,
+            body: JSON.stringify(requestBody)
         })
 
         console.log(response);
