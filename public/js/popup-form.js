@@ -72,6 +72,8 @@ class PopupForm extends HTMLElement {
         })
 
         console.log(response);
+        this.parentNode.parentNode.remove();
+
         index();
     }
 }
