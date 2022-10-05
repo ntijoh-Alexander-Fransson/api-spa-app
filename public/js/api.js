@@ -1,3 +1,7 @@
+async function fakeChange() {
+  console.log('fake change');
+}
+
 async function index() {
   const response = await fetch("/api/employees");
   const json = await response.json();
