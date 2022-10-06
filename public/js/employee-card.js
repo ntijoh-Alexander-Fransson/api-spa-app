@@ -26,6 +26,7 @@ template.innerHTML = `
                 <slot name='department_id'><slot/>
             </p>
             <button>edit</button>
+            <delete-button></delete-button>
         </section>
     </div>
 `;

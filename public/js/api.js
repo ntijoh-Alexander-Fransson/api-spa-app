@@ -26,3 +26,13 @@ async function add() {
     .querySelector("#add-employee")
     .appendChild(new EmployeeForm({ fields }));
 }
+
+function deleteCard(){
+  document.querySelector('main').addEventListener('click', async (e) => {
+    if(e.composedPath()[2].tagName == 'DELETE-BUTTON'){
+      console.log(e.target.id);
+
+      
+    }
+  })
+}
