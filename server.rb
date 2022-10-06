@@ -99,7 +99,13 @@ class Server < Sinatra::Base
         return {result: 'success'}.to_json        
     end
 
+    #post img
+    post '/api/img' do
+        tempfile = params[:file][:tempfile] 
+        filename = params[:file][:filename] 
 
+        File.rename tempfile.path, "./public/img/#{filename}"
+    end
 
 
 end

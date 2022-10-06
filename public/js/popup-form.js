@@ -60,6 +60,7 @@ class PopupForm extends HTMLElement {
         }
 
         this.form = this.shadowRoot.querySelector('form');
+        this.form.setAttribute('enctype','multipart/form-data')
 
         this.form.onsubmit = this.updateUser;
 
@@ -70,19 +71,33 @@ class PopupForm extends HTMLElement {
 
         const updatedValues = this.shadowRoot.querySelectorAll('input');
         const requestBody = {};
+        let fileHolder = null;
 
         console.log(updatedValues);
 
-        updatedValues.forEach(element => {
-            requestBody[element.name] = element.value;
+        updatedValues.forEach((element,index) => {
+            if(index == 0){
+                requestBody[element.name] = element.files[0].name.split('.')[0];
+                fileHolder = element.files[0];
+            }else{
+                requestBody[element.name] = element.value;
+            }
         });
 
-        console.log(requestBody);
+        const imgFile = new FormData();
+        imgFile.append('file', fileHolder);
+
+        const imgResponse = await fetch('/api/img',{
+            method: 'POST',
+            body: imgFile
+        });
+
+        console.log(imgResponse);
 
         const response = await fetch('/api/employees/'+this.fields[0],{
             method: "PATCH",
             body: JSON.stringify(requestBody)
-        })
+        });
 
         console.log(response);
         this.parentNode.parentNode.remove();
