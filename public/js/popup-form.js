@@ -4,6 +4,14 @@ const popupFormLables = [
     'email',
     'phone',
     'department_id'
+];
+
+const popupTypes =[
+    'file',
+    'text',
+    'email',
+    'tel',
+    'number'
 ]
 
 const popupFormTemplate = document.createElement('template');
@@ -31,20 +39,23 @@ class PopupForm extends HTMLElement {
 
             const section = this.inputSection;
 
+            const br1 = document.createElement('br');
+            section.appendChild(br1);
+
             const lable = document.createElement('lable');
             lable.innerText = popupFormLables[i - 1];
             lable.setAttribute('for',popupFormLables[i - 1]);
             section.appendChild(lable);
 
+            const br2 = document.createElement('br');
+            section.appendChild(br2);
+
             const input = document.createElement('input');
-            input.setAttribute('type','text');
+            input.setAttribute('type',popupTypes[i - 1]);
             input.setAttribute('value', fields[i]);
             input.setAttribute('name', popupFormLables[i - 1]);
             input.setAttribute('id', popupFormLables[i - 1]);
             section.appendChild(input);
-
-            const br = document.createElement('br');
-            section.appendChild(br);
 
         }
 
@@ -59,6 +70,8 @@ class PopupForm extends HTMLElement {
 
         const updatedValues = this.shadowRoot.querySelectorAll('input');
         const requestBody = {};
+
+        console.log(updatedValues);
 
         updatedValues.forEach(element => {
             requestBody[element.name] = element.value;
