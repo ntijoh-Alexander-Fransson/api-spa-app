@@ -16,9 +16,9 @@ div.employee.card {
 
 #dialog{
   display: block;
-  position: absolute;
-  top: 35vh;
-  left: 35vw;
+  position: fixed;
+  top: 40vh;
+  left: 40vw;
   z-index: auto;
   margin-top: 0px;
 }
