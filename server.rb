@@ -95,7 +95,7 @@ class Server < Sinatra::Base
     #destroy 
     delete '/api/employees/:id' do
         content_type :json
-        result = @db.execute('DELETE FROM users WHERE id = ?', params['id'])
+        result = @db.execute('DELETE FROM employees WHERE id = ? ', params['id'])
         return {result: 'success'}.to_json        
     end
 

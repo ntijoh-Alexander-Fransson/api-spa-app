@@ -30,9 +30,15 @@ async function add() {
 function deleteCard(){
   document.querySelector('main').addEventListener('click', async (e) => {
     if(e.composedPath()[2].tagName == 'DELETE-BUTTON'){
-      console.log(e.target.id);
-
+      const response = await fetch('/api/employees/'+e.target.id, {
+        method: 'DELETE'
+      });
       
+      if(response.status > 199 && response.status < 300){
+        e.target.remove();
+      }else{
+        alert('error code: '+response.status);
+      }
     }
   })
 }
