@@ -78,7 +78,7 @@ class Server < Sinatra::Base
         #binding.break
         result = @db.execute("UPDATE employees 
             SET name=?, phone=?, department_id=?, img=?, email=?
-            WHERE id = 1", payload['name'], payload['phone'], payload['department_id'], payload['img'], payload['email'])#, payload['phone'], payload['department_id'], payload['img'], payload['id']])
+            WHERE id = ?", payload['name'], payload['phone'], payload['department_id'], payload['img'], payload['email'], params['id'])#, payload['phone'], payload['department_id'], payload['img'], payload['id']])
         return {result: 'success'}.to_json                             
     end
 

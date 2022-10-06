@@ -66,7 +66,6 @@ class EmployeeCard extends HTMLElement {
   showDialog = () => {
     const dialogContainer = document.querySelector("#dialog");
 
-    console.log(dialogContainer);
     dialogContainer.appendChild(new EmployeePopup(this.id));
   };
 }
