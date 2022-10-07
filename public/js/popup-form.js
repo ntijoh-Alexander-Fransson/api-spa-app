@@ -94,6 +94,8 @@ class PopupForm extends HTMLElement {
             });
 
             console.log(imgResponse);
+        }else{
+            requestBody['img'] = this.fields[1];
         }
     
         const response = await fetch('/api/employees/'+this.fields[0],{
