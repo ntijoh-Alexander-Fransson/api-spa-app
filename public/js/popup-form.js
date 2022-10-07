@@ -76,7 +76,7 @@ class PopupForm extends HTMLElement {
         console.log(updatedValues);
 
         updatedValues.forEach((element,index) => {
-            if(index == 0){
+            if(index == 0 && element.files.length > 0){
                 requestBody[element.name] = element.files[0].name.split('.')[0];
                 fileHolder = element.files[0];
             }else{
@@ -84,16 +84,18 @@ class PopupForm extends HTMLElement {
             }
         });
 
-        const imgFile = new FormData();
-        imgFile.append('file', fileHolder);
+        if(fileHolder != null){
+            const imgFile = new FormData();
+            imgFile.append('file', fileHolder);
 
-        const imgResponse = await fetch('/api/img',{
-            method: 'POST',
-            body: imgFile
-        });
+            const imgResponse = await fetch('/api/img',{
+                method: 'POST',
+                body: imgFile
+            });
 
-        console.log(imgResponse);
-
+            console.log(imgResponse);
+        }
+    
         const response = await fetch('/api/employees/'+this.fields[0],{
             method: "PATCH",
             body: JSON.stringify(requestBody)

@@ -5,9 +5,11 @@ template.innerHTML = `
         .employee.card {
             display: flex;
             gap: 10px;
+            max-width: 33vw;
         }
         img {
             object-fit: contain;
+            max-height: 200px;
         }
     </style>
     <div class='employee card' data-id=''>
