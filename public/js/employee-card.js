@@ -8,6 +8,7 @@ template.innerHTML = `
         }
         img {
             object-fit: contain;
+            max-height: 200px;
         }
     </style>
     <div class='employee card' data-id=''>
