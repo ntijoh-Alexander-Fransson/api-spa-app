@@ -105,7 +105,7 @@ class Server < Sinatra::Base
         filename = params[:file][:filename] 
 
         File.rename tempfile.path, "./public/img/#{filename}"
-        return {result: 'success'}.to_js
+        return {result: 'success'}.to_json
     end
 
 

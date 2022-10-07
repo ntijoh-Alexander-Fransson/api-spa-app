@@ -77,8 +77,14 @@ class PopupForm extends HTMLElement {
 
         updatedValues.forEach((element,index) => {
             if(index == 0 && element.files.length > 0){
-                requestBody[element.name] = element.files[0].name.split('.')[0];
-                fileHolder = element.files[0];
+
+                const file = element.files[0];
+                const blobJpg = file.slice(0, file.size, 'image/jpg');
+                const newFileName = self.crypto.randomUUID();
+                const renamedFile = new File([blobJpg], newFileName+'.jpg', {type: 'image/jpg'}); 
+
+                requestBody[element.name] = newFileName;
+                fileHolder = renamedFile;
             }else{
                 requestBody[element.name] = element.value;
             }
