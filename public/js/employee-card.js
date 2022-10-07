@@ -5,7 +5,6 @@ template.innerHTML = `
         .employee.card {
             display: flex;
             gap: 10px;
-            max-width: 33vw;
         }
         img {
             object-fit: contain;
