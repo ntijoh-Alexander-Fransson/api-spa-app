@@ -62,6 +62,9 @@ class PopupForm extends HTMLElement {
         this.form = this.shadowRoot.querySelector('form');
         this.form.setAttribute('enctype','multipart/form-data')
 
+        this.fileUpload = this.shadowRoot.querySelector('#img');
+        this.fileUpload.setAttribute('accept','image/*');
+
         this.form.onsubmit = this.updateUser;
 
     }
